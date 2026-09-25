@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Room Type Predictor · NYC Airbnb Listings</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="skyglow" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <h1 class="topbar-heading">NYC Airbnb Room Listing</h1>
+    <button type="button" id="themeToggle" class="theme-toggle" aria-label="Switch between light and dark theme">
+      <span class="theme-icon sun">☀</span>
+      <span class="theme-icon moon">☾</span>
+    </button>
+  </header>
+
+  <main class="page">
+
+    <section class="hero">
+      <h1>NYC Airbnb room type predictor</h1>
+      <p>What kind of stay is this listing? Enter a listing's details and the model will predict whether it's an entire home, a private room, or a shared room — the way the city lights up differently behind each kind of door.</p>
+    </section>
+
+    <div class="workspace">
+
+      <!-- FORM -->
+      <form id="predictForm" class="panel form-panel" novalidate>
+        <div class="panel-head">
+          <h2>Listing details</h2>
+          <button type="button" id="exampleBtn" class="text-btn">Use an example</button>
+        </div>
+
+        <fieldset class="field-group">
+          <legend>Where it sits</legend>
+          <div class="field-row two">
+            <div class="field">
+              <label for="latitude">Latitude</label>
+              <input type="number" id="latitude" step="0.000001" min="-90" max="90" required value="40.7128">
+            </div>
+            <div class="field">
+              <label for="longitude">Longitude</label>
+              <input type="number" id="longitude" step="0.000001" min="-180" max="180" required value="-73.9560">
+            </div>
+          </div>
+          <div class="field-row two">
+            <div class="field">
+              <label for="neighbourhood_group">Borough</label>
+              <select id="neighbourhood_group" required>
+                <option value="Manhattan">Manhattan</option>
+                <option value="Brooklyn">Brooklyn</option>
+                <option value="Queens">Queens</option>
+                <option value="Bronx">Bronx</option>
+                <option value="Staten Island">Staten Island</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="neighbourhood">Neighbourhood</label>
+              <input type="text" id="neighbourhood" list="neighbourhoodList" required value="Williamsburg" autocomplete="off">
+              <datalist id="neighbourhoodList"></datalist>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="field-group">
+          <legend>Price &amp; stay</legend>
+          <div class="field-row two">
+            <div class="field">
+              <label for="price">Price per night ($)</label>
+              <input type="number" id="price" step="1" min="1" required value="150">
+            </div>
+            <div class="field">
+              <label for="minimum_nights">Minimum nights</label>
+              <input type="number" id="minimum_nights" step="1" min="1" max="365" required value="3">
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="field-group">
+          <legend>Track record</legend>
+          <div class="field-row two">
+            <div class="field">
+              <label for="number_of_reviews">Total reviews</label>
+              <input type="number" id="number_of_reviews" step="1" min="0" required value="42">
+            </div>
+            <div class="field">
+              <label for="reviews_per_month">Reviews / month</label>
+              <input type="number" id="reviews_per_month" step="0.01" min="0" required value="1.35">
+            </div>
+          </div>
+          <div class="field-row two">
+            <div class="field">
+              <label for="calculated_host_listings_count">Host's other listings</label>
+              <input type="number" id="calculated_host_listings_count" step="1" min="0" required value="2">
+            </div>
+            <div class="field">
+              <label for="availability_365">Available days / yr</label>
+              <input type="number" id="availability_365" step="1" min="0" max="365" required value="210">
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="error-banner" id="errorBanner" role="alert" hidden></div>
+
+        <button type="submit" class="predict-btn" id="predictBtn">
+          <span class="btn-label">Predict room type</span>
+          <span class="btn-spinner" aria-hidden="true"></span>
+        </button>
+      </form>
+
+      <!-- RESULT -->
+      <section class="panel result-panel" aria-live="polite">
+        <div class="panel-head">
+          <h2>The skyline's answer</h2>
+        </div>
+
+        <div class="skyline" id="skyline">
+          <!-- buildings injected by JS -->
+        </div>
+
+        <p class="predicted-eyebrow">Most likely</p>
+        <p class="predicted-name" id="predictedName">Fill in the form and predict</p>
+
+        <ul class="prob-breakdown" id="probBreakdown">
+          <!-- probability rows injected by JS -->
+        </ul>
+      </section>
+
+    </div>
+
+  </main>
+
+<script src="script.js"></script>
+</body>
+</html>
