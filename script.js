@@ -27,7 +27,7 @@ const exampleBtn = document.getElementById("exampleBtn");
 const themeToggle = document.getElementById("themeToggle");
 
 // Point this at wherever your FastAPI server is running.
-const API_BASE = "http://127.0.0.1:8000";
+const API_BASE = "https://nyc-airbnb-room-type-classifier-213i.onrender.com";
 
 /* ---------- Theme ---------- */
 
