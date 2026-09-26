@@ -13,6 +13,9 @@
 
 This project builds a machine learning classification model to predict the room type of an Airbnb listing in New York City — entire home/apartment, private room, or shared room — using listing attributes such as price, location, availability, and review activity.
 
+
+🔗 **Live Demo:** [https://nyc-airbnb-room-type-classifier-1.onrender.com/](https://nyc-airbnb-room-type-classifier-1.onrender.com/)
+
 ---
 
 ## 📌 Table of Contents
@@ -47,7 +50,8 @@ The goal is to classify an Airbnb listing's room type — entire home/apartment,
 
 - **Language:** Python
 - **Libraries:** NumPy, Pandas, Matplotlib, Seaborn, Scikit-learn
-
+- **Backend:** FastAPI
+- **Frontend:** HTML, CSS, JavaScript
 ---
 
 ## ⚙️ Methods Used <a name="methods-used"></a>
